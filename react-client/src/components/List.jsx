@@ -1,12 +1,22 @@
 import React from 'react';
 import ListItem from './ListItem.jsx';
 
-const List = (props) => (
-  <div>
-    <h4> List Component </h4>
-    There are { props.items.length } items.
-    { props.items.map(item => <ListItem item={item}/>)}
+const List = ({ items }) => {
+  return(
+    <div>
+    {
+      items.map(item => {
+      return (
+      <ListItem
+        key = {item.id}
+        purchase={item.purchase}
+        price ={item.price}
+        />
+      )
+    })
+  }
   </div>
 )
+}
 
 export default List;

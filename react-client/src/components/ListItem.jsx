@@ -1,8 +1,8 @@
 import React from 'react';
 
-const ListItem = (props) => (
+const ListItem = ({ purchase, price }) => (
   <div>
-    { props.item.description }
+  {`${purchase} ${price}`}
   </div>
 )
 
