@@ -12,7 +12,6 @@ module.exports.getDaily = (request, response) => {
 
 module.exports.addToDaily = (request,response) => {
   const { purchase, price } = request.body;
-  console.log("!!!!!", purchase, price, "!!!")
   db.postToDaily(purchase, price, (result) => {
   response
     .status(201)

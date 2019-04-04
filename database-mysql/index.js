@@ -34,7 +34,6 @@ console.log(purchase, price)
     "INSERT INTO daily (purchase, price) VALUES (?, ?);",
  [purchase, price],
   (error, results) => {
-    console.log(results)
     if (error) {
       cb(error);
   } else {

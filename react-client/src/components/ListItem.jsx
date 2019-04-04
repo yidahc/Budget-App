@@ -2,7 +2,7 @@ import React from 'react';
 
 const ListItem = ({ purchase, price }) => (
   <div>
-  {`${purchase} ${price}`}
+  {`${purchase} $${price}`}
   </div>
 )
 

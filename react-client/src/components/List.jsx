@@ -4,8 +4,7 @@ import ListItem from './ListItem.jsx';
 const List = ({ items }) => {
   return(
     <div>
-    {
-      items.map(item => {
+    {items.map(item => {
       return (
       <ListItem
         key = {item.id}
