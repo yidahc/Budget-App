@@ -43,6 +43,18 @@ console.log(purchase, price)
   )
 };
 
+module.exports.getTotal = cb => {
+  connection.query(
+    "SELECT * FROM daily", (error, results) => {
+    if (error) {
+      throw error;
+    } else {
+      console.log(results)
+      cb(results);
+    }
+  });
+};
+
 // cb needs two parameters
 /*
 module.exports.getSearchResults= (cb, input) => {
