@@ -1,5 +1,16 @@
 const db = require('../database-mysql/index.js');
 
+/*
+module.exports.getCat = (request, response) => {
+  db.getCat( data => {
+  response
+    .status(200)
+    .send(data)
+    .end();
+  });
+};
+*/
+
 module.exports.getDaily = (request, response) => {
   db.getAllDaily( data => {
   response
@@ -9,6 +20,14 @@ module.exports.getDaily = (request, response) => {
   });
 };
 
+module.exports.getTotals = (request, response) => {
+  db.getTotals( data => {
+  response
+    .status(200)
+    .send(data)
+    .end();
+  });
+};
 
 module.exports.addToDaily = (request,response) => {
   const { purchase, price } = request.body;

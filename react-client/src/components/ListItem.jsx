@@ -1,4 +1,4 @@
-
+/*
 import React from 'react';
 
 const ListItem = ({ purchase, price }) => (
@@ -9,3 +9,23 @@ const ListItem = ({ purchase, price }) => (
 )
 
 export default ListItem;
+
+
+
+<div>
+ <center>
+  <DropDownMenu
+    value={this.state.value}
+    onChange={this.handleChange}
+    style={styles}
+    autoWidth={false}
+  >
+  {items.map(e => {
+return (
+<MenuItem value={e.id} primaryText={e.category} />
+)}
+)}
+</DropDownMenu>
+</center>
+</div>
+*/

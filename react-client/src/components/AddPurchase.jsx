@@ -1,11 +1,17 @@
 import React from 'react';
 
+const styles = {
+      width: 300,
+      fontSize: "30px"
+  };
+
 class AddPurchase extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       purchase: "",
-      price: "",
+      price: 0,
+      value: 1,
     };
     this.handleInput = this.handleInput.bind(this)
     //otherwise it would be bound to the window
@@ -26,40 +32,42 @@ handleSubmit(e) {
     //this.props.postData(description.toLowerCase(), quantity);
     this.props.addItems('/daily', {
       purchase: purchase.toLowerCase(),
-      price,
+      price: price,
   });
 //(`$${price}`)
     this.setState({
       purchase: "",
-      price: "",
+      price: 0,
     });
   }
   render () {
-      const { purchase, price } = this.state;
-      const { addItems, getItems} = this.props;
+      const { purchase, price, value } = this.state;
       return (
       <div>
+      <form>
         <label>
-          Description: {' '}
+          Purchase: {' '}
           <input
             type="text"
             name= "purchase"
             value= {purchase}
             placeholder= "Enter Purchase Item"
             onChange={this.handleInput}
+            required
           />
         </label>
         <br />
         <label>
-        Quantity: {' '}
+        Price: {' '}
         <input
           type="number"
           name= "price"
           value= {price}
-          placeholder= "Enter Price"
+          placeholder= "$0"
           onChange={this.handleInput}
         />
         </label>
+        </form>
 
         <br />
         <button

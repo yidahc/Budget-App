@@ -3,20 +3,22 @@ import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import List from './components/List.jsx';
 import AddPurchase from './components/AddPurchase.jsx';
-import ListItem from './components/ListItem.jsx';
-
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       items: [],
+      totals: 0,
     };
   this.getItems = this.getItems.bind(this);
+  this.getTotals = this.getTotals.bind(this);
   this.addItems = this.addItems.bind(this);
+  this.handleChange = this.handleChange.bind(this)
   }
   componentDidMount() {
     this.getItems('./daily');
+    this.getTotals('./totals');
  }
   getItems(url) {
      $.ajax({
@@ -26,6 +28,7 @@ class App extends React.Component {
          this.setState({
            items: results
          });
+         console.log(results)
        },
        error: (xhr, err) => {
          console.log('err', err);
@@ -33,18 +36,18 @@ class App extends React.Component {
      });
    }
 
- /*
-  getItems (url= '') {
+  getTotals (url= '') {
   return fetch(url)
     .then(response => response.json())
     .then(data => {
       this.setState({
-        items: data,
+        totals: data,
       });
+      console.log(data)
     })
     .catch(err => console.error(err));
 }
-*/
+
   addItems (url= '', data= {}) {
   return fetch(url, {
     method: 'POST',
@@ -53,21 +56,30 @@ class App extends React.Component {
     },
     body: JSON.stringify(data),
   })
-    .then(() => this.getItems(url))
+    .then(() => this.componentDidMount())
     .catch(err => console.error(err));
 }
-  render () {
-    const { items } = this.state;
 
+handleChange(event, index, value) {
+  this.setState({
+    value: value,
+  });
+}
+  render () {
+    console.log(this.state, "PROPS FROM APP!")
+    const { items, totals } = this.state;
     return (
-      <div>
-      <h1>Budget Tracker</h1>
-      <AddPurchase getItems={this.getItems} addItems={this.addItems} />
-      <List items={items} />
-    </div>
+      <div className= "header">
+        <h1>Budget Tracker</h1>
+        <AddPurchase getItems={this.getItems} addItems={this.addItems} />
+        <List items={items} totals={totals} />
+      </div>
     );
   }
 }
+
+
+
 
 ReactDOM.render(<App />, document.getElementById('app'));
 

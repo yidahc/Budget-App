@@ -21,6 +21,8 @@ app.use(express.static(__dirname + '/../react-client/dist'));
 
 app.get('/daily', routes.getDaily);
 
+app.get('/totals', routes.getTotals);
+
 app.post('/daily', routes.addToDaily);
 
 module.exports = app;

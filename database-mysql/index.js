@@ -43,29 +43,15 @@ console.log(purchase, price)
   )
 };
 
-module.exports.getTotal = cb => {
+module.exports.getTotals = cb => {
   connection.query(
-    "SELECT * FROM daily", (error, results) => {
-    if (error) {
-      throw error;
+    "SELECT SUM(price) as Total FROM daily", (error, results) => {
+      if (error) {
+        throw(error);
     } else {
       console.log(results)
       cb(results);
     }
-  });
-};
-
-// cb needs two parameters
-/*
-module.exports.getSearchResults= (cb, input) => {
-  connection.query(
-    "SELECT purchase FROM daily WHERE price = {input};", (error, results) => {
-    if (error) {
-      throw error;
-    } else {
-      console.log(results)
-      cb(results);
     }
-  });
-};
-*/
+    )
+  };
