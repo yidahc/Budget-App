@@ -30,8 +30,8 @@ module.exports.getTotals = (request, response) => {
 };
 
 module.exports.addToDaily = (request,response) => {
-  const { purchase, price } = request.body;
-  db.postToDaily(purchase, price, (result) => {
+  const { purchase, price, category } = request.body;
+  db.postToDaily(purchase, price, category, (result) => {
   response
     .status(201)
     .send(result)

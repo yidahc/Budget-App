@@ -11,11 +11,12 @@ class AddPurchase extends React.Component {
     this.state = {
       purchase: "",
       price: 0,
-      value: 1,
+      category: "utilities",
     };
     this.handleInput = this.handleInput.bind(this)
     //otherwise it would be bound to the window
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.setState = this.setState.bind(this)
   }
 handleInput(event) {
   const {target} = event;
@@ -25,23 +26,27 @@ handleInput(event) {
     [name]:value
   }); // name and value are in target
 }
-
+// handleChange(event, index, value) {
+//   this.setState(category: category);
+// }
 handleSubmit(e) {
     e.preventDefault();
-    const { purchase, price } = this.state;
-    //this.props.postData(description.toLowerCase(), quantity);
-    this.props.addItems('/daily', {
+    const { purchase, price, category } = this.state;
+    this.props.addItems('./daily', {
       purchase: purchase.toLowerCase(),
       price: price,
+      category: category,
   });
-//(`$${price}`)
+
     this.setState({
       purchase: "",
       price: 0,
+      category: "utilities"
     });
   }
   render () {
-      const { purchase, price, value } = this.state;
+      const { purchase, price, category } = this.state;
+      console.log({category}, "!!!")
       return (
       <div>
       <form>
@@ -53,7 +58,6 @@ handleSubmit(e) {
             value= {purchase}
             placeholder= "Enter Purchase Item"
             onChange={this.handleInput}
-            required
           />
         </label>
         <br />
@@ -68,10 +72,26 @@ handleSubmit(e) {
         />
         </label>
         </form>
-
         <br />
+        <select
+        name="category"
+        value={category}
+        onChange={this.handleInput}
+        >
+          <option value="utilities">utilities</option>
+          <option value="food">food</option>
+          <option value="education">education</option>
+          <option value="rent/housing">rent/housing</option>
+          <option value="health/beauty">health/beauty</option>
+          <option value="savings">savings</option>
+          <option value="debt">debt</option>
+          <option value="transportation">transportation</option>
+          <option value="entertainment">entertainment</option>
+          <option value="miscellaneous">miscellaneous</option>
+        </select>
         <button
-          onClick={this.handleSubmit}>Submit</button>
+          onClick={this.handleSubmit}
+        >Submit</button>
       </div>
       );
     }

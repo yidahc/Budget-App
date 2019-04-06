@@ -68,10 +68,11 @@ handleChange(event, index, value) {
   render () {
     console.log(this.state, "PROPS FROM APP!")
     const { items, totals } = this.state;
+    console.log({items})
     return (
       <div className= "header">
         <h1>Budget Tracker</h1>
-        <AddPurchase getItems={this.getItems} addItems={this.addItems} />
+        <AddPurchase getItems={this.getItems} items={items} addItems={this.addItems} />
         <List items={items} totals={totals} />
       </div>
     );

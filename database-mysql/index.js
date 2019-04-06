@@ -28,11 +28,10 @@ module.exports.getAllDaily = cb => {
   });
 };
 
-module.exports.postToDaily = function (purchase, price, cb) {
-console.log(purchase, price)
+module.exports.postToDaily = function (purchase, price, category, cb) {
   connection.query(
-    "INSERT INTO daily (purchase, price) VALUES (?, ?);",
- [purchase, price],
+    "INSERT INTO daily (purchase, price, category) VALUES (?, ?, ?);",
+ [purchase, price, category],
   (error, results) => {
     if (error) {
       cb(error);
