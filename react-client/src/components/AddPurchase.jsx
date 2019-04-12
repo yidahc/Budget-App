@@ -67,7 +67,7 @@ handleSubmit(e) {
           type="number"
           name= "price"
           value= {price}
-          placeholder= "$0"
+          placeholder= {`$0`}
           onChange={this.handleInput}
         />
         </label>

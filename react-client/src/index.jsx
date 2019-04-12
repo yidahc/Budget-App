@@ -11,16 +11,16 @@ class App extends React.Component {
       items: [],
       totals: 0,
     };
-  this.getItems = this.getItems.bind(this);
+  this.getToday = this.getToday.bind(this);
   this.getTotals = this.getTotals.bind(this);
   this.addItems = this.addItems.bind(this);
   this.handleChange = this.handleChange.bind(this)
   }
   componentDidMount() {
-    this.getItems('./daily');
+    this.getToday('./today');
     this.getTotals('./totals');
  }
-  getItems(url) {
+  getToday(url) {
      $.ajax({
        url: url,
        method: 'GET',
@@ -35,6 +35,17 @@ class App extends React.Component {
        }
      });
    }
+
+getAllExp (url= '') {
+  return fetch(url)
+    .then(res => res.json())
+    .then(data => {
+      this.setState ({
+        items: data,
+      });
+    })
+    .catch(err => console.error(err));
+}
 
   getTotals (url= '') {
   return fetch(url)

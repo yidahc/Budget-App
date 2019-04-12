@@ -2,8 +2,8 @@ var mysql = require('mysql');
 
 var connection = mysql.createConnection({
   host     : 'localhost',
-  user     : 'root',
-  password : 'Holacode1',
+  user     : 'student',
+  password : 'Holacode',
   database : 'budget'
 });
 
@@ -16,9 +16,9 @@ connection.connect(err => {
     console.log('Connected as id ' + connection.threadId);
 });
 
-module.exports.getAllDaily = cb => {
+module.exports.getToday = cb => {
   connection.query(
-    "SELECT * FROM daily", (error, results) => {
+    "SELECT * FROM daily WHERE day(day) = day(curdate());", (error, results) => {
     if (error) {
       throw error;
     } else {
@@ -54,3 +54,15 @@ module.exports.getTotals = cb => {
     }
     )
   };
+
+module.exports.getAllDaily = cb => {
+  connection.query(
+    "SELECT * from daily", (error, response) => {
+    if (error) {
+      throw (error)
+    } else {
+      cb (response)
+    }
+  }
+  )
+};

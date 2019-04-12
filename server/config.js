@@ -19,10 +19,12 @@ app.use(express.static(__dirname + '/../react-client/dist'));
 // app.use(express.static(__dirname + '/../angular-client'));
 // app.use(express.static(__dirname + '/../node_modules'));
 
-app.get('/daily', routes.getDaily);
+app.get('/today', routes.getDaily);
 
 app.get('/totals', routes.getTotals);
 
 app.post('/daily', routes.addToDaily);
+
+app.get('/daily', routes.getAllDaily);
 
 module.exports = app;

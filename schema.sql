@@ -12,6 +12,12 @@ CREATE TABLE daily (
   category ENUM("utilities", "food", "education", "rent/housing", "health/beauty", "savings", "debt", "transportation", "entertainment", "miscellaneous") DEFAULT "utilities"
 );
 
+CREATE TABLE totals (
+  id INT NOT NUTT AUTO_INCREMENT PRIMARY KEY,
+  budget INT NOT NULL,
+  dailyTotal INT NOT NULL (SELECT SUM(price) from daily),
+);
+
 /*  Execute this file from the command line by typing:
  *    mysql -u root -p < server/schema.sql
  *  to create the database and the tables.*/

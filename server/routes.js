@@ -12,7 +12,7 @@ module.exports.getCat = (request, response) => {
 */
 
 module.exports.getDaily = (request, response) => {
-  db.getAllDaily( data => {
+  db.getToday( data => {
   response
     .status(200)
     .send(data)
@@ -37,4 +37,14 @@ module.exports.addToDaily = (request,response) => {
     .send(result)
     .end();
   })
+};
+
+
+module.exports.getAllDaily = (request, response) => {
+  db.getAllDaily ( data => {
+ response
+   .status(200)
+   .send(data)
+   .end()
+})
 };

@@ -40,7 +40,7 @@ for (var i in obj) {
     </tbody>
     <tfoot>
       <tr>
-        <td>Total</td>
+        <th>Total</th>
         <td>{`$${int}`}</td>
       </tr>
     </tfoot>
