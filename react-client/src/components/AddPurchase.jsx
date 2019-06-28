@@ -11,7 +11,7 @@ class AddPurchase extends React.Component {
     this.state = {
       purchase: "",
       price: 0,
-      category: "utilities",
+      category: "Select Category",
     };
     this.handleInput = this.handleInput.bind(this)
     //otherwise it would be bound to the window
@@ -44,6 +44,7 @@ handleSubmit(e) {
       category: "utilities"
     });
   }
+  
   render () {
       const { purchase, price, category } = this.state;
       console.log({category}, "!!!")
@@ -78,6 +79,7 @@ handleSubmit(e) {
         value={category}
         onChange={this.handleInput}
         >
+          <option value="" disabled selected>Select Category</option>
           <option value="utilities">utilities</option>
           <option value="food">food</option>
           <option value="education">education</option>

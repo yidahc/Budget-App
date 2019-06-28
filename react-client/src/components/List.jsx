@@ -27,8 +27,8 @@ for (var i in obj) {
           </tr>
         </thead>
         <tbody>
-         {items.map(x =>{
-          return (
+         {items.map(x =>
+           (
             <tr key={x.id}>
               <td>{x.purchase}</td>
               <td>{`$${x.price}`}</td>
@@ -36,7 +36,7 @@ for (var i in obj) {
               <td>{x.category}</td>
             </tr>
           )
-        })}
+        )}
     </tbody>
     <tfoot>
       <tr>

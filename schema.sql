@@ -13,7 +13,7 @@ CREATE TABLE daily (
 );
 
 CREATE TABLE totals (
-  id INT NOT NUTT AUTO_INCREMENT PRIMARY KEY,
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   budget INT NOT NULL,
   dailyTotal INT NOT NULL (SELECT SUM(price) from daily),
 );
