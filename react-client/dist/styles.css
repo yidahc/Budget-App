@@ -1,0 +1,17 @@
+body  {
+  background-image: url("background.jpg");
+  background-repeat: no-repeat;
+  background-size: 1300px;
+  text-align: center;
+}
+.header {
+  padding-top: 150px;
+}
+th {
+   border: 1px solid black;
+}
+
+th, td {
+  padding-left: 15px;
+  padding-right: 15px;
+}
