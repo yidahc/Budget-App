@@ -1,10 +1,12 @@
 var mysql = require('mysql');
 
+//mysql://:acd2ee25@us-cdbr-iron-east-02.cleardb.net/?reconnect=true
+
 var connection = mysql.createConnection({
-  host     : 'localhost',
-  user     : 'root',
-  password : '170482',
-  database : 'budget'
+  host     : 'us-cdbr-iron-east-02.cleardb.net',
+  user     : 'b94a8e5967d2c0',
+  password : 'acd2ee25',
+  database : 'heroku_4d11cf55a76c0cc'
 });
 
 connection.connect(err => {
