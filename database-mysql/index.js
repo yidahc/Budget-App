@@ -20,7 +20,8 @@ connection.connect(err => {
 
 module.exports.getToday = cb => {
   connection.query(
-    "SELECT * FROM daily WHERE day(day) = day(curdate());", (error, results) => {
+//    "SELECT * FROM daily WHERE day(day) = day(curdate());", (error, results) => {
+    "SELECT * FROM daily;", (error, results) => {
     if (error) {
       throw error;
     } else {
