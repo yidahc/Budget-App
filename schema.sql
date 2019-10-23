@@ -12,11 +12,21 @@ CREATE TABLE daily (
   category ENUM("utilities", "food", "education", "rent/housing", "health/beauty", "savings", "debt", "transportation", "entertainment", "miscellaneous") DEFAULT "utilities"
 );
 
+/* 
+Create a categories table and add default categories
+type: UDF or standard
+
+*/
+/*
 CREATE TABLE totals (
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   budget INT NOT NULL,
-  dailyTotal INT NOT NULL (SELECT SUM(price) from daily),
+ // grandTotal INT NOT NULL (SELECT SUM(price) from daily),
+  Add totals per month
+  Add totals per category for each month. 
+  Create trigger that adds new totals each time the month changes
 );
+*/
 
 /*  Execute this file from the command line by typing:
  *    mysql -u root -p < server/schema.sql

@@ -20,8 +20,9 @@ connection.connect(err => {
 
 module.exports.getToday = cb => {
   connection.query(
-//    "SELECT * FROM daily WHERE day(day) = day(curdate());", (error, results) => {
-    "SELECT * FROM daily;", (error, results) => {
+    "SELECT * FROM daily WHERE day(day) = day(curdate());", (error, results) => {
+// querying the database to create a view of all(*) entries in daily table 
+// where the day timestamp is the same as the current day
     if (error) {
       throw error;
     } else {
@@ -46,6 +47,7 @@ module.exports.postToDaily = function (purchase, price, category, cb) {
 };
 
 module.exports.getTotals = cb => {
+  // add possible parameter where we can select the total for only a specific day
   connection.query(
     "SELECT SUM(price) as Total FROM daily", (error, results) => {
       if (error) {
@@ -69,3 +71,7 @@ module.exports.getAllDaily = cb => {
   }
   )
 };
+
+
+// write method to edit a specific entry (update)
+// write method to delete a specific entry
